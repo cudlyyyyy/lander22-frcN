@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freecash - Get Paid to Scroll</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0a0f0d;
+            --card-bg: #111a15;
+            --accent: #00ff7f;
+            --accent-dark: #00cc66;
+            --text-white: #ffffff;
+            --text-gray: #8a9e93;
+            --border: rgba(255,255,255,0.08);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            color: var(--text-white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 430px;
+            margin: 0 auto;
+            padding: 24px 20px 40px;
+            position: relative;
+        }
+
+        /* App Icon */
+        .icon-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .app-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,255,127,0.25);
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Trending badge */
+        .trending-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+
+        .trending-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* Headline */
+        .headline {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .headline h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+        }
+
+        .headline h1 .green {
+            color: var(--accent);
+            display: block;
+        }
+
+        .subtext {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        /* Stats bar */
+        .stats-bar {
+            display: flex;
+            background: var(--card-bg);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .stat {
+            flex: 1;
+            padding: 14px 8px;
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat-value {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 3px;
+        }
+
+        .stat-label {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-gray);
+        }
+
+        /* Steps */
+        .steps {
+            background: var(--card-bg);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .step {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.85rem;
+            font-weight: 900;
+            color: #000;
+        }
+
+        .step-content h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 4px;
+        }
+
+        .step-content p {
+            font-size: 0.78rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        /* CTA Button */
+        .cta-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--accent);
+            border: none;
+            border-radius: 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #000;
+            cursor: pointer;
+            letter-spacing: 0.01em;
+            box-shadow: 0 8px 30px rgba(0,255,127,0.3);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .cta-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Popup overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            z-index: 100;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .overlay.active {
+            display: flex;
+        }
+
+        .popup {
+            background: #141a17;
+            border-radius: 24px 24px 0 0;
+            padding: 32px 24px 40px;
+            width: 100%;
+            max-width: 430px;
+            text-align: center;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .popup-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .popup-title {
+            font-size: 1.6rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .popup-title span {
+            color: var(--accent);
+        }
+
+        .popup-text {
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        .popup-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--accent);
+            border: none;
+            border-radius: 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #000;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(0,255,127,0.3);
+            transition: all 0.2s ease;
+        }
+
+        .popup-btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="icon-wrap">
+            <div class="app-icon">
+                <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/6106a7e4f66385001d52966b/0x0.png" alt="Freecash">
+            </div>
+        </div>
+
+        <div class="trending-badge">
+            <div class="trending-dot"></div>
+            Trending Now
+        </div>
+
+        <div class="headline">
+            <h1>Get Paid <span class="green">to Scroll</span></h1>
+        </div>
+
+        <p class="subtext">Real cash for your phone time. $5 just for signing up.<br>Instant PayPal cashout.</p>
+
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-value">$200–$500+</div>
+                <div class="stat-label">Weekly Earnings</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">500K+</div>
+                <div class="stat-label">Members</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">4.7★</div>
+                <div class="stat-label">App Store</div>
+            </div>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h3>Sign up &amp; select 21+</h3>
+                    <p>Scroll rewards only unlock for 21+ members. Select it at signup to access everything.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h3>Complete 2 offers to activate scrolling</h3>
+                    <p>A quick game or survey. Activates scroll earning &amp; all high-paying offers. You earn doing them.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h3>Get paid</h3>
+                    <p>Scroll runs in the background. Cash out to PayPal, Visa or Crypto. No minimum.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" class="cta-btn" onclick="handleStartClick(); return false;">
+            Start Earning Now →
+        </a>
+
+    </div>
+
+    <!-- Before You Go Popup -->
+    <div class="overlay" id="overlay">
+        <div class="popup">
+            <div class="popup-label">Before You Go</div>
+            <h2 class="popup-title">Select <span>21+</span> when you sign up</h2>
+            <p class="popup-text">This unlocks the scroll earning feature and all high-paying offers on Freecash.</p>
+            <button class="popup-btn" onclick="handleGotIt()">Got it →</button>
+        </div>
+    </div>
+
+    <script>
+        // ─────────────────────────────────────────
+        // CHANGE THESE each time you reuse the page
+        const CAMPAIGN_ID = 'USAslidet2';
+        const LANGUAGE = 'English';
+        const AFFILIATE_LINK = 'https://taptrcks.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpLWIiLCJ1IjoiNjlhMTA5NmRhMDk4YWY4NzUxZWQ3MjI2IiwidHMiOjE3NzQ0NTcwOTc5Mzd9?s2=USAslidet2';
+        // ─────────────────────────────────────────
+
+        const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwEOhmxwRliyxHarP4qKC2UzzxvFb7lxZ1dE2G-arazQ1FRByRbO6JZK6P8AvuWWNZ1kg/exec';
+
+        function handleStartClick() {
+            document.getElementById('overlay').classList.add('active');
+        }
+
+        function isTikTokBrowser() {
+            return /musical_ly|tiktok/i.test(navigator.userAgent);
+        }
+
+        function isAndroid() {
+            return /android/i.test(navigator.userAgent);
+        }
+
+        function getExternalLink(url) {
+            if (isTikTokBrowser()) {
+                if (isAndroid()) {
+                    return 'intent://' + url.replace(/^https?:\/\//, '') + '#Intent;scheme=https;end';
+                } else {
+                    return 'x-safari-' + url;
+                }
+            }
+            return url;
+        }
+
+        function handleGotIt() {
+            // Track the click
+            fetch(SHEET_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    timestamp: new Date().toISOString(),
+                    campaign: CAMPAIGN_ID,
+                    selection: 'Button Click',
+                    language: LANGUAGE
+                })
+            }).catch(() => {});
+
+            // Navigate after short delay
+            setTimeout(function() {
+                window.location.href = getExternalLink(AFFILIATE_LINK);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
