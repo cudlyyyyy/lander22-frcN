@@ -20,42 +20,32 @@
         }
 
         html, body {
-            height: 100%;
             width: 100%;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
             background: var(--bg);
             color: var(--text-white);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-family: 'Inter', sans-serif;
         }
 
         .container {
             width: 100%;
-            height: 100vh;
             max-width: 430px;
+            margin: 0 auto;
+            min-height: 100svh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            padding: 3vh 5vw;
+            justify-content: center;
+            padding: 16px 18px calc(env(safe-area-inset-bottom) + 16px);
+            gap: 10px;
         }
 
-        /* App Icon */
         .icon-wrap {
             display: flex;
             justify-content: center;
-            margin-bottom: 0.5vh;
         }
 
         .app-icon {
-            width: 11vw;
-            height: 11vw;
-            max-width: 52px;
-            max-height: 52px;
+            width: 52px;
+            height: 52px;
             border-radius: 14px;
             overflow: hidden;
             box-shadow: 0 0 20px rgba(0,255,127,0.25);
@@ -67,18 +57,16 @@
             object-fit: cover;
         }
 
-        /* Trending badge */
         .trending-badge {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 5px;
-            font-size: clamp(0.55rem, 2vw, 0.7rem);
+            font-size: 0.65rem;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 0.5vh;
         }
 
         .trending-dot {
@@ -89,14 +77,12 @@
             flex-shrink: 0;
         }
 
-        /* Headline */
         .headline {
             text-align: center;
-            margin-bottom: 0.5vh;
         }
 
         .headline h1 {
-            font-size: clamp(1.8rem, 8vw, 2.6rem);
+            font-size: clamp(2rem, 9vw, 2.8rem);
             font-weight: 900;
             line-height: 1.05;
             letter-spacing: -0.03em;
@@ -109,54 +95,47 @@
 
         .subtext {
             text-align: center;
-            font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+            font-size: clamp(0.72rem, 2.8vw, 0.85rem);
             color: var(--text-gray);
             line-height: 1.4;
-            margin-bottom: 1vh;
         }
 
-        /* Stats bar */
         .stats-bar {
             display: flex;
             background: var(--card-bg);
             border-radius: 12px;
             border: 1px solid var(--border);
-            margin-bottom: 1vh;
             overflow: hidden;
         }
 
         .stat {
             flex: 1;
-            padding: clamp(6px, 1.5vh, 12px) 4px;
+            padding: 10px 4px;
             text-align: center;
             border-right: 1px solid var(--border);
         }
 
-        .stat:last-child {
-            border-right: none;
-        }
+        .stat:last-child { border-right: none; }
 
         .stat-value {
-            font-size: clamp(0.7rem, 2.8vw, 0.95rem);
+            font-size: clamp(0.72rem, 2.8vw, 0.95rem);
             font-weight: 800;
             color: var(--accent);
             margin-bottom: 2px;
         }
 
         .stat-label {
-            font-size: clamp(0.5rem, 1.5vw, 0.6rem);
+            font-size: clamp(0.5rem, 1.6vw, 0.6rem);
             font-weight: 700;
             letter-spacing: 0.06em;
             text-transform: uppercase;
             color: var(--text-gray);
         }
 
-        /* Steps */
         .steps {
             background: var(--card-bg);
             border-radius: 12px;
             border: 1px solid var(--border);
-            margin-bottom: 1.5vh;
             overflow: hidden;
         }
 
@@ -164,45 +143,42 @@
             display: flex;
             gap: 10px;
             align-items: flex-start;
-            padding: clamp(8px, 1.5vh, 14px) 12px;
+            padding: 12px;
             border-bottom: 1px solid var(--border);
         }
 
-        .step:last-child {
-            border-bottom: none;
-        }
+        .step:last-child { border-bottom: none; }
 
         .step-num {
-            width: clamp(22px, 5vw, 26px);
-            height: clamp(22px, 5vw, 26px);
+            width: 26px;
+            height: 26px;
             background: var(--accent);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+            font-size: 0.8rem;
             font-weight: 900;
             color: #000;
         }
 
         .step-content h3 {
-            font-size: clamp(0.75rem, 2.8vw, 0.9rem);
+            font-size: clamp(0.78rem, 2.8vw, 0.9rem);
             font-weight: 700;
             color: var(--text-white);
             margin-bottom: 2px;
         }
 
         .step-content p {
-            font-size: clamp(0.62rem, 2.2vw, 0.75rem);
+            font-size: clamp(0.65rem, 2.2vw, 0.75rem);
             color: var(--text-gray);
             line-height: 1.4;
         }
 
-        /* CTA Button */
         .cta-btn {
             width: 100%;
-            padding: clamp(12px, 2.5vh, 18px);
+            padding: 16px;
             background: var(--accent);
             border: none;
             border-radius: 14px;
@@ -212,20 +188,15 @@
             color: #000;
             cursor: pointer;
             box-shadow: 0 8px 30px rgba(0,255,127,0.3);
-            transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
             text-decoration: none;
             flex-shrink: 0;
         }
 
-        .cta-btn:active {
-            transform: scale(0.98);
-        }
+        .cta-btn:active { transform: scale(0.98); }
 
-        /* Popup overlay */
         .overlay {
             display: none;
             position: fixed;
@@ -236,14 +207,12 @@
             justify-content: center;
         }
 
-        .overlay.active {
-            display: flex;
-        }
+        .overlay.active { display: flex; }
 
         .popup {
             background: #141a17;
             border-radius: 24px 24px 0 0;
-            padding: 28px 24px 36px;
+            padding: 28px 24px calc(env(safe-area-inset-bottom) + 32px);
             width: 100%;
             max-width: 430px;
             text-align: center;
@@ -256,7 +225,7 @@
         }
 
         .popup-label {
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
@@ -271,9 +240,7 @@
             margin-bottom: 10px;
         }
 
-        .popup-title span {
-            color: var(--accent);
-        }
+        .popup-title span { color: var(--accent); }
 
         .popup-text {
             font-size: clamp(0.8rem, 2.8vw, 0.875rem);
@@ -294,12 +261,9 @@
             color: #000;
             cursor: pointer;
             box-shadow: 0 8px 30px rgba(0,255,127,0.3);
-            transition: all 0.2s ease;
         }
 
-        .popup-btn:active {
-            transform: scale(0.98);
-        }
+        .popup-btn:active { transform: scale(0.98); }
     </style>
 </head>
 <body>
@@ -367,7 +331,6 @@
 
     </div>
 
-    <!-- Before You Go Popup -->
     <div class="overlay" id="overlay">
         <div class="popup">
             <div class="popup-label">Before You Go</div>
