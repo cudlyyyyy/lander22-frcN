@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Freecash - Get Paid to Scroll</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,40 +14,51 @@
             --bg: #0a0f0d;
             --card-bg: #111a15;
             --accent: #00ff7f;
-            --accent-dark: #00cc66;
             --text-white: #ffffff;
             --text-gray: #8a9e93;
             --border: rgba(255,255,255,0.08);
         }
 
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: var(--bg);
-            min-height: 100vh;
             color: var(--text-white);
-            overflow-x: hidden;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .container {
+            width: 100%;
+            height: 100vh;
             max-width: 430px;
-            margin: 0 auto;
-            padding: 24px 20px 40px;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 3vh 5vw;
         }
 
         /* App Icon */
         .icon-wrap {
             display: flex;
             justify-content: center;
-            margin-bottom: 16px;
+            margin-bottom: 0.5vh;
         }
 
         .app-icon {
-            width: 72px;
-            height: 72px;
-            border-radius: 18px;
+            width: 11vw;
+            height: 11vw;
+            max-width: 52px;
+            max-height: 52px;
+            border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 0 30px rgba(0,255,127,0.25);
+            box-shadow: 0 0 20px rgba(0,255,127,0.25);
         }
 
         .app-icon img {
@@ -61,30 +72,31 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            font-size: 0.72rem;
+            gap: 5px;
+            font-size: clamp(0.55rem, 2vw, 0.7rem);
             font-weight: 700;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 14px;
+            margin-bottom: 0.5vh;
         }
 
         .trending-dot {
-            width: 7px;
-            height: 7px;
+            width: 6px;
+            height: 6px;
             background: var(--accent);
             border-radius: 50%;
+            flex-shrink: 0;
         }
 
         /* Headline */
         .headline {
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 0.5vh;
         }
 
         .headline h1 {
-            font-size: 3rem;
+            font-size: clamp(1.8rem, 8vw, 2.6rem);
             font-weight: 900;
             line-height: 1.05;
             letter-spacing: -0.03em;
@@ -97,25 +109,25 @@
 
         .subtext {
             text-align: center;
-            font-size: 0.9rem;
+            font-size: clamp(0.7rem, 2.5vw, 0.85rem);
             color: var(--text-gray);
-            line-height: 1.5;
-            margin-bottom: 20px;
+            line-height: 1.4;
+            margin-bottom: 1vh;
         }
 
         /* Stats bar */
         .stats-bar {
             display: flex;
             background: var(--card-bg);
-            border-radius: 14px;
+            border-radius: 12px;
             border: 1px solid var(--border);
-            margin-bottom: 20px;
+            margin-bottom: 1vh;
             overflow: hidden;
         }
 
         .stat {
             flex: 1;
-            padding: 14px 8px;
+            padding: clamp(6px, 1.5vh, 12px) 4px;
             text-align: center;
             border-right: 1px solid var(--border);
         }
@@ -125,16 +137,16 @@
         }
 
         .stat-value {
-            font-size: 1rem;
+            font-size: clamp(0.7rem, 2.8vw, 0.95rem);
             font-weight: 800;
             color: var(--accent);
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
 
         .stat-label {
-            font-size: 0.6rem;
+            font-size: clamp(0.5rem, 1.5vw, 0.6rem);
             font-weight: 700;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
             color: var(--text-gray);
         }
@@ -142,17 +154,21 @@
         /* Steps */
         .steps {
             background: var(--card-bg);
-            border-radius: 14px;
+            border-radius: 12px;
             border: 1px solid var(--border);
-            margin-bottom: 24px;
+            margin-bottom: 1.5vh;
             overflow: hidden;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
         }
 
         .step {
             display: flex;
-            gap: 14px;
+            gap: 10px;
             align-items: flex-start;
-            padding: 16px;
+            padding: clamp(8px, 1.5vh, 14px) 12px;
             border-bottom: 1px solid var(--border);
         }
 
@@ -161,45 +177,44 @@
         }
 
         .step-num {
-            width: 28px;
-            height: 28px;
+            width: clamp(22px, 5vw, 26px);
+            height: clamp(22px, 5vw, 26px);
             background: var(--accent);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            font-size: 0.85rem;
+            font-size: clamp(0.7rem, 2.5vw, 0.85rem);
             font-weight: 900;
             color: #000;
         }
 
         .step-content h3 {
-            font-size: 0.95rem;
+            font-size: clamp(0.75rem, 2.8vw, 0.9rem);
             font-weight: 700;
             color: var(--text-white);
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .step-content p {
-            font-size: 0.78rem;
+            font-size: clamp(0.62rem, 2.2vw, 0.75rem);
             color: var(--text-gray);
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         /* CTA Button */
         .cta-btn {
             width: 100%;
-            padding: 18px;
+            padding: clamp(12px, 2.5vh, 18px);
             background: var(--accent);
             border: none;
             border-radius: 14px;
             font-family: 'Inter', sans-serif;
-            font-size: 1.05rem;
+            font-size: clamp(0.9rem, 3.5vw, 1.05rem);
             font-weight: 800;
             color: #000;
             cursor: pointer;
-            letter-spacing: 0.01em;
             box-shadow: 0 8px 30px rgba(0,255,127,0.3);
             transition: all 0.2s ease;
             display: flex;
@@ -207,6 +222,7 @@
             justify-content: center;
             gap: 8px;
             text-decoration: none;
+            flex-shrink: 0;
         }
 
         .cta-btn:active {
@@ -231,7 +247,7 @@
         .popup {
             background: #141a17;
             border-radius: 24px 24px 0 0;
-            padding: 32px 24px 40px;
+            padding: 28px 24px 36px;
             width: 100%;
             max-width: 430px;
             text-align: center;
@@ -249,11 +265,11 @@
             letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .popup-title {
-            font-size: 1.6rem;
+            font-size: clamp(1.3rem, 5vw, 1.6rem);
             font-weight: 900;
             line-height: 1.2;
             margin-bottom: 10px;
@@ -264,20 +280,20 @@
         }
 
         .popup-text {
-            font-size: 0.875rem;
+            font-size: clamp(0.8rem, 2.8vw, 0.875rem);
             color: var(--text-gray);
             line-height: 1.5;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .popup-btn {
             width: 100%;
-            padding: 18px;
+            padding: 16px;
             background: var(--accent);
             border: none;
             border-radius: 14px;
             font-family: 'Inter', sans-serif;
-            font-size: 1.05rem;
+            font-size: clamp(0.9rem, 3.5vw, 1.05rem);
             font-weight: 800;
             color: #000;
             cursor: pointer;
@@ -399,7 +415,6 @@
         }
 
         function handleGotIt() {
-            // Track the click
             fetch(SHEET_URL, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -412,7 +427,6 @@
                 })
             }).catch(() => {});
 
-            // Navigate after short delay
             setTimeout(function() {
                 window.location.href = getExternalLink(AFFILIATE_LINK);
             }, 300);
